@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{Layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<section layout:fragment="content">
+
+    <div class="d-flex justify-content-center align-items-center">
+        <!-- Default form login -->
+        <form th:action="@{/login}" th:object="${user}" method="post" class="text-center border border-light p-5">
+
+            <p class="h4 mb-4">Sign in</p>
+
+            <!-- Email -->
+            <input th:field="*{username}" type="text" id="defaultLoginFormEmail" class="form-control mb-4"
+                   placeholder="Username">
+
+            <!-- Password -->
+            <input th:field="*{password}" type="password" id="defaultLoginFormPassword" class="form-control mb-4"
+                   placeholder="Password">
+
+
+            <!-- Sign in button -->
+            <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+
+
+        </form>
+
+    </div>
+    <!-- Default form login -->
+</section>
+</body>
+</html>

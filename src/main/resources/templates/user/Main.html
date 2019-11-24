@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{Layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .form {
+            width: 800px;
+        }
+    </style>
+</head>
+<body>
+<form layout:fragment="barrehcerche" th:action="@{/a/user/updateMotCle}" method="post" class="form-inline">
+    <div class="md-form my-0">
+        <input name="motCle" th:value="${motCle}" class="form-control mr-sm-2" type="text"
+               placeholder="Rerchercher User" aria-label="Search">
+    </div>
+</form>
+
+<section layout:fragment="content">
+    <div class="row">
+        <div class="col-2">
+            <nav style="height: 88vh" class="nav flex-column grey lighten-4 py-4 font-weight-bold">
+                <a class="nav-link" href="/a/user/add">Ajout</a>
+                <a class="nav-link" href="/a/user/">List</a>
+            </nav>
+        </div>
+        <div class="col-9 d-flex justify-content-center align-items-center" layout:fragment="sous-content">
+        </div>
+    </div>
+</section>
+</body>
+</html>

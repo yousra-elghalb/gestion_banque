@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+    <title>Ressource</title>
+    <link rel="stylesheet" href="/mdb/css/bootstrap.css">
+    <link rel="stylesheet" href="/mdb/css/mdb.css">
+    <style>
+        .container-fluid {
+            padding-left: 0px;
+        }
+    </style>
+</head>
+<body>
+<!--Navbar-->
+<nav sec:authorize="isAuthenticated()" class="navbar navbar-expand-lg navbar-dark primary-color">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#">Banque</a>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+            <li sec:authorize="hasAuthority('USER') or hasAuthority('ADMIN')" class="nav-item">
+                <a class="nav-link" href="/c/client/">Client</a>
+            </li>
+            <li sec:authorize="hasAuthority('USER') or hasAuthority('ADMIN')" class="nav-item">
+                <a class="nav-link" href="/u/compte/">Compte</a>
+            </li>
+            <li sec:authorize="hasAuthority('USER') or hasAuthority('ADMIN')" class="nav-item">
+                <a class="nav-link" href="/u/operation/list">Operation</a>
+            </li>
+            <li sec:authorize="hasAuthority('CLIENT')" class="nav-item">
+                <a class="nav-link" href="/c/operation/list">Operation</a>
+            </li>
+            <li sec:authorize="hasAuthority('CLIENT')" class="nav-item">
+                <a class="nav-link" href="/c/compte">Mes comptes</a>
+            </li>
+            <li sec:authorize="hasAuthority('ADMIN')" class="nav-item">
+                <a class="nav-link" href="/a/user/">User</a>
+            </li>
+        </ul>
+        <!-- Links -->
+
+        <form layout:fragment="barrehcerche" class="form-inline">
+        </form>
+        <a class="nav-link" href="/logout">Logout</a>
+    </div>
+    <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+<section style="height: 90vh" class="container-fluid" layout:fragment="content">
+</section>
+<footer class="footer">
+    <!--  <div class="container">
+          <span class="text-muted">Mohamed benayad.</span>
+      </div>-->
+</footer>
+<script src="/mdb/js/popper.min.js"></script>
+<script src="/mdb/js/jquery-3.3.1.min.js"></script>
+<script src="/mdb/js/bootstrap.js"></script>
+<script src="/mdb/js/mdb.js"></script>
+
+</body>
+</html>

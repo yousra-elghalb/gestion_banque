@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{client/Main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-9 d-flex justify-content-center align-items-center" layout:fragment="sous-content">
+    <div class="row">
+        <div class="col-12">
+            <div class="">
+                <div class="col-12">
+                    <h1></h1>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-12">
+
+                    <!-- Default form contact -->
+                    <form th:action="@{/u/client/save}" th:object="${compteCourant}" method="post"
+                          class="form text-center border border-light p-5">
+                        <input hidden="hidden" th:field="*{client.code}" type="text">
+                        <p class="h4 mb-4">Client</p>
+
+                        <!-- Name -->
+                        <div class="form-group">
+
+                            <input th:field="*{client.nom}" type="text" id="defaultContactFormName"
+                                   class="form-control mb-4"
+                                   placeholder="Name">
+                            <div th:if="${#fields.hasErrors('client.nom')}" th:errors="*{client.nom}"
+                                 class="text-danger">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input th:field="*{client.user.username}" type="text" id="defaultContactFormN"
+                                   class="form-control mb-4"
+                                   placeholder="usename">
+                            <div th:if="${#fields.hasErrors('client.user.username')}"
+                                 th:errors="*{client.user.username}"
+                                 class="text-danger">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input th:field="*{code}" type="text" id="code"
+                                   class="form-control mb-4"
+                                   placeholder="Code Compte">
+                            <div th:if="${#fields.hasErrors('code')}" th:errors="*{code}"
+                                 class="text-danger">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input th:field="*{solde}" type="text" id="solde"
+                                   class="form-control mb-4"
+                                   placeholder="Solde">
+                            <div th:if="${#fields.hasErrors('solde')}" th:errors="*{solde}"
+                                 class="text-danger">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input th:field="*{decouvet}" type="text" id="decouvet"
+                                   class="form-control mb-4"
+                                   placeholder="decouvet">
+                            <div th:if="${#fields.hasErrors('decouvet')}" th:errors="*{decouvet}"
+                                 class="text-danger">
+                            </div>
+                        </div>
+
+
+                        <!-- Send button -->
+                        <button class="btn btn-info btn-block" type="submit">Send</button>
+
+                    </form>
+                    <!-- Default form contact -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

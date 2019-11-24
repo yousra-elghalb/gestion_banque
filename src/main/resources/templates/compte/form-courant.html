@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{user/Main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-9 d-flex justify-content-center align-items-center" layout:fragment="sous-content">
+    <div class="row">
+        <div class="col-12">
+            <div class="">
+                <div class="col-12">
+                    <h1></h1>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-12">
+
+                    <!-- Default form contact -->
+                    <form th:action="@{/u/compte/saveCC}" th:object="${compte}" method="post"
+                          class="form text-center border border-light p-5">
+                        <input hidden="hidden" th:field="*{code}" type="text">
+                        <input hidden="hidden" th:field="*{client.code}" th:value="sclient.code" type="text">
+                        <p class="h4 mb-4">Compte courant</p>
+                        <div class="form-group">
+                            Client :
+                            <div th:text="${sclient.nom}"></div>
+                        </div>
+                        <!-- Name -->
+                        <div class="form-group">
+                            <input th:field="*{solde}" type="text" id="defaultContactFormSolde"
+                                   class="form-control mb-4"
+                                   placeholder="Solde">
+                            <div th:if="${#fields.hasErrors('solde')}" th:errors="*{solde}" class="text-danger">
+                            </div>
+                        </div>
+
+
+                        <!-- Send button -->
+                        <button class="btn btn-info btn-block" type="submit">Send</button>
+
+                    </form>
+                    <!-- Default form contact -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
